@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Phase 7 – Reporting & Executive Presentation</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
+</head>
+
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Red Team Portal</h2>
+  <a href="index.html">Overview</a>
+  <a href="phase1-threat-intel.html">Phase 1 – Threat Intelligence</a>
+  <a href="phase2-external-recon.html">Phase 2 – External Recon</a>
+  <a href="phase3-vulnerability.html">Phase 3 – Vulnerability</a>
+  <a href="phase4-exploitation.html">Phase 4 – Exploitation</a>
+  <a href="phase5-privesc.html">Phase 5 – Privilege Escalation</a>
+  <a href="phase6-detection.html">Phase 6 – Detection</a>
+  <a href="phase7-reporting.html">Phase 7 – Reporting</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="section">
+  <h1>Phase 7 — Reporting & Executive Presentation</h1>
+  <p>
+    <strong>Objective:</strong> Clearly communicate attack paths, business impact,
+    detection gaps, and remediation priorities to both technical stakeholders
+    and executive leadership.
+  </p>
+
+  <input id="searchBox" class="search" type="text"
+         placeholder="Search reporting sections, deliverables…">
+</div>
+
+<!-- ================= REPORT STRUCTURE ================= -->
+
+<div class="section">
+<h2>Red Team Report – Core Structure</h2>
+
+<div class="tool" data-tool="attack-narrative">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Attack Narrative & Kill Chain</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Chronological walkthrough of the red team engagement:
+      initial access → exploitation → escalation → lateral movement → impact.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="attack-paths">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Attack Path Documentation</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Visual and written representation of how low-privileged access
+      led to high-value asset compromise.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="vuln-chaining">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Vulnerability Chaining</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Demonstrates how individually “medium” issues combined into
+      a critical attack scenario.
+    </p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= MITRE & DETECTION ================= -->
+
+<div class="section">
+<h2>MITRE ATT&CK Mapping & Detection Gaps</h2>
+
+<div class="tool" data-tool="mitre-mapping">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">MITRE ATT&CK Technique Mapping</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Mapping of observed attacker actions to ATT&CK techniques,
+      highlighting detection coverage and blind spots.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="soc-visibility">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">SOC & SIEM Visibility Assessment</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Identifies which activities were detected, delayed, or missed entirely,
+      along with alert quality analysis.
+    </p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= EVIDENCE ================= -->
+
+<div class="section">
+<h2>Evidence Collection & Validation</h2>
+
+<div class="tool" data-tool="screenshots">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Screenshots & Console Evidence</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Timestamped screenshots and terminal outputs demonstrating successful
+      access without extracting production data.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="metadata-only">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Metadata-Only Validation</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Proof-of-access using metadata and permissions instead of sensitive data downloads.
+    </p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= RISK & REMEDIATION ================= -->
+
+<div class="section">
+<h2>Risk Rating & Remediation Roadmap</h2>
+
+<div class="tool" data-tool="risk-rating">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Risk Rating Methodology</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Risk ratings based on exploitability, impact, and likelihood —
+      contextualized to the organization’s business.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="remediation-30-60-90">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">30 / 60 / 90 Day Remediation Roadmap</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Phased remediation plan prioritizing high-risk attack paths first,
+      followed by hygiene and long-term improvements.
+    </p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= EXECUTIVE ================= -->
+
+<div class="section">
+<h2>Executive & Board-Level Deliverables</h2>
+
+<div class="tool" data-tool="exec-summary">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Executive Summary</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      High-level, non-technical summary focusing on business impact,
+      risk exposure, and decision points.
+    </p>
+  </details>
+</div>
+
+<div class="tool" data-tool="board-deck">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Board Presentation Deck</div>
+  </div>
+  <details><summary>Description</summary>
+    <p>
+      Slide deck designed for leadership, including attack visuals,
+      key findings, and strategic recommendations.
+    </p>
+  </details>
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

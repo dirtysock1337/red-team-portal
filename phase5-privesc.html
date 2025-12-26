@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Phase 5 – Privilege Escalation & Lateral Movement</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
+</head>
+
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Red Team Portal</h2>
+  <a href="index.html">Overview</a>
+  <a href="phase1-threat-intel.html">Phase 1 – Threat Intelligence</a>
+  <a href="phase2-external-recon.html">Phase 2 – External Recon</a>
+  <a href="phase3-vulnerability.html">Phase 3 – Vulnerability</a>
+  <a href="phase4-exploitation.html">Phase 4 – Exploitation</a>
+  <a href="phase5-privesc.html">Phase 5 – Privilege Escalation</a>
+  <a href="phase6-detection.html">Phase 6 – Detection</a>
+  <a href="phase7-reporting.html">Phase 7 – Reporting</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="section">
+  <h1>Phase 5 — Privilege Escalation & Lateral Movement</h1>
+  <p>
+    <strong>Objective:</strong> Expand access from the initial foothold by escalating
+    privileges, harvesting credentials, pivoting across systems, and identifying
+    paths to high-value assets — while observing detection capabilities.
+  </p>
+
+  <input id="searchBox" class="search" type="text"
+         placeholder="Search tools, techniques, MITRE IDs…">
+</div>
+
+<!-- ================= CLOUD PRIVILEGE ESCALATION ================= -->
+
+<div class="section">
+<h2>Cloud Privilege Escalation & Enumeration</h2>
+
+<div class="tool" data-tool="pacu-cloud">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Pacu</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1087</span>
+    <span class="tag">Cloud IAM</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Enumerate IAM users, roles, policies, and perform privilege escalation chains.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="scoutsuite">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">ScoutSuite</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1087</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Multi-cloud security posture assessment for privilege weaknesses.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="enumerate-iam">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Enumerate-IAM</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1087</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Identify overly permissive IAM roles and trust relationships.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="cloudfox">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">CloudFox</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1087</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Situational awareness for AWS environments and privilege paths.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= CREDENTIAL HARVESTING ================= -->
+
+<div class="section">
+<h2>Credential Harvesting & Secrets Access</h2>
+
+<div class="tool" data-tool="lazagne">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">LaZagne</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1003</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Extract stored credentials from browsers, applications, and OS stores.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="session-dumping">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Session / Token Dumping (Custom Scripts)</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1003</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Harvest in-memory tokens and credentials where permitted.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= LATERAL MOVEMENT ================= -->
+
+<div class="section">
+<h2>Lateral Movement Frameworks</h2>
+
+<div class="tool" data-tool="crackmapexec">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">CrackMapExec</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1021</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>SMB, WinRM, LDAP, and AD-based lateral movement.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="netexec">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">NetExec</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1021</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Successor to CrackMapExec with modular execution.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="sliver">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Sliver</div>
+  </div>
+  <div class="tags">
+    <span class="tag">C2</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Implant-based lateral movement and C2 operations.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="covenant">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Covenant (Limited)</div>
+  </div>
+  <div class="tags">
+    <span class="tag">C2</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Restricted C2 usage for controlled internal movement.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= ATTACK PATH VISIBILITY ================= -->
+
+<div class="section">
+<h2>Attack Path Mapping & Evidence Collection</h2>
+
+<div class="tool" data-tool="sharphound">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">SharpHound</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1069</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Collect Active Directory relationship data.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="azurehound">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">AzureHound</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1069</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Enumerate Azure AD relationships and privileges.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= LOCAL PRIV ESC ================= -->
+
+<div class="section">
+<h2>Local Privilege Escalation — Windows & Linux</h2>
+
+<div class="tool" data-tool="winpeas">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">winPEAS</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1068</span>
+  </div>
+</div>
+
+<div class="tool" data-tool="seatbelt">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Seatbelt</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="powerup">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">PowerUp</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="mimikatz">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Mimikatz</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1003</span>
+  </div>
+</div>
+
+<div class="tool" data-tool="sharpup">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">SharpUp</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="linpeas">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">LinPEAS</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="lse">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Linux Smart Enumeration (LSE)</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="pspy">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">pspy</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="gtfobins">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">GTFOBins</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="sudo-killer">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">sudo-killer</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="beroot">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">BeRoot</div>
+  </div>
+</div>
+
+<div class="tool" data-tool="linenum">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">LinEnum</div>
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

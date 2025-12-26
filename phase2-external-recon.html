@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Phase 2 – External Reconnaissance & Enumeration</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
+</head>
+
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Red Team Portal</h2>
+  <a href="index.html">Overview</a>
+  <a href="phase1-threat-intel.html">Phase 1 – Threat Intelligence</a>
+  <a href="phase2-external-recon.html">Phase 2 – External Recon</a>
+  <a href="phase3-vulnerability.html">Phase 3 – Vulnerability</a>
+  <a href="phase4-exploitation.html">Phase 4 – Exploitation</a>
+  <a href="phase5-privesc.html">Phase 5 – Privilege Escalation</a>
+  <a href="phase6-detection.html">Phase 6 – Detection</a>
+  <a href="phase7-reporting.html">Phase 7 – Reporting</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="section">
+  <h1>Phase 2 — External Reconnaissance & Enumeration</h1>
+  <p>
+    <strong>Objective:</strong> Build a complete, high-fidelity map of the external
+    attack surface including domains, subdomains, IP space, services, technologies,
+    cloud assets, and exposed code.
+  </p>
+
+  <input id="searchBox" class="search" type="text"
+         placeholder="Search tools, MITRE IDs, recon techniques…">
+</div>
+
+<!-- ================= SUBDOMAIN ENUMERATION ================= -->
+
+<div class="section">
+<h2>Domain & Subdomain Enumeration</h2>
+
+<div class="tool" data-tool="subfinder">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Subfinder</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span><span class="tag">Passive Recon</span></div>
+  <details><summary>Installation</summary>
+    <code>go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest</code>
+  </details>
+  <details><summary>Usage</summary>
+    <code>subfinder -d example.com -all -silent</code>
+  </details>
+</div>
+
+<div class="tool" data-tool="amass">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Amass</div>
+  </div>
+  <div class="tags"><span class="tag">T1590</span></div>
+  <details><summary>Installation</summary>
+    <code>apt install amass</code>
+  </details>
+  <details><summary>Usage</summary>
+    <code>amass enum -passive -d example.com</code>
+  </details>
+</div>
+
+<div class="tool" data-tool="assetfinder">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Assetfinder</div>
+  </div>
+  <div class="tags"><span class="tag">T1590</span></div>
+  <details><summary>Installation</summary>
+    <code>go install github.com/tomnomnom/assetfinder@latest</code>
+  </details>
+</div>
+
+<div class="tool" data-tool="sudomy">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Sudomy</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+  <details><summary>Usage</summary>
+    <p>All-in-one subdomain enumeration framework.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="crtsh">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">crt.sh / Certificate Transparency Logs</div>
+  </div>
+  <div class="tags"><span class="tag">T1596</span></div>
+  <details><summary>Usage</summary>
+    <p>Discover subdomains from TLS certificates.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="sublist3r">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Sublist3r</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="findomain">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Findomain</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="github-subdomains">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">GitHub Subdomains</div>
+  </div>
+  <div class="tags"><span class="tag">T1593</span></div>
+</div>
+
+</div>
+
+<!-- ================= DNS & IP ENUMERATION ================= -->
+
+<div class="section">
+<h2>DNS & IP Enumeration</h2>
+
+<div class="tool" data-tool="shuffledns">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">ShuffleDNS</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="puredns">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">PureDNS</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="dnsx">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">DNSx</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="massdns">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">MassDNS</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="fierce">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Fierce</div>
+  </div>
+  <div class="tags"><span class="tag">T1590</span></div>
+</div>
+
+<div class="tool" data-tool="dig">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Dig</div>
+  </div>
+  <div class="tags"><span class="tag">T1590</span></div>
+</div>
+
+<div class="tool" data-tool="bgp-he">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">bgp.he.net</div>
+  </div>
+  <div class="tags"><span class="tag">T1590</span></div>
+</div>
+
+</div>
+
+<!-- ================= PORT SCANNING ================= -->
+
+<div class="section">
+<h2>Service & Port Discovery</h2>
+
+<div class="tool" data-tool="naabu">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Naabu</div>
+  </div>
+  <div class="tags"><span class="tag">T1046</span></div>
+</div>
+
+<div class="tool" data-tool="masscan">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Masscan</div>
+  </div>
+  <div class="tags"><span class="tag">T1046</span></div>
+</div>
+
+<div class="tool" data-tool="nmap">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Nmap</div>
+  </div>
+  <div class="tags"><span class="tag">T1046</span></div>
+</div>
+
+</div>
+
+<!-- ================= WEB & JS RECON ================= -->
+
+<div class="section">
+<h2>Web, JS & Technology Fingerprinting</h2>
+
+<div class="tool" data-tool="katana">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Katana</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="whatweb">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">WhatWeb</div>
+  </div>
+  <div class="tags"><span class="tag">T1592</span></div>
+</div>
+
+<div class="tool" data-tool="wappalyzer-cli">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Wappalyzer CLI</div>
+  </div>
+  <div class="tags"><span class="tag">T1592</span></div>
+</div>
+
+<div class="tool" data-tool="aquatone">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Aquatone</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="waymore">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Waymore + GF</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="eyewitness">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">EyeWitness</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="jssearch">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">JSSearch</div>
+  </div>
+  <div class="tags"><span class="tag">T1593</span></div>
+</div>
+
+</div>
+
+<!-- ================= CLOUD & AUTOMATION ================= -->
+
+<div class="section">
+<h2>Cloud Discovery & Recon Automation</h2>
+
+<div class="tool" data-tool="cloudenum">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">CloudEnum</div>
+  </div>
+  <div class="tags"><span class="tag">T1087</span></div>
+</div>
+
+<div class="tool" data-tool="s3scanner">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">S3Scanner</div>
+  </div>
+  <div class="tags"><span class="tag">T1087</span></div>
+</div>
+
+<div class="tool" data-tool="gcpbucketbrute">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">GCPBucketBrute</div>
+  </div>
+  <div class="tags"><span class="tag">T1087</span></div>
+</div>
+
+<div class="tool" data-tool="nuclei">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Nuclei</div>
+  </div>
+  <div class="tags"><span class="tag">T1595</span></div>
+</div>
+
+<div class="tool" data-tool="chaos">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Chaos Project</div>
+  </div>
+  <div class="tags"><span class="tag">Recon Automation</span></div>
+</div>
+
+<div class="tool" data-tool="reconftw">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">reconFTW</div>
+  </div>
+  <div class="tags"><span class="tag">Recon Automation</span></div>
+</div>
+
+<div class="tool" data-tool="frogy2">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Frogy 2.0</div>
+  </div>
+  <div class="tags"><span class="tag">All-in-One Recon</span></div>
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

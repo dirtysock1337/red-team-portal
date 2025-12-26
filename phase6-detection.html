@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Phase 6 – Detection & Response Evaluation</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
+</head>
+
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Red Team Portal</h2>
+  <a href="index.html">Overview</a>
+  <a href="phase1-threat-intel.html">Phase 1 – Threat Intelligence</a>
+  <a href="phase2-external-recon.html">Phase 2 – External Recon</a>
+  <a href="phase3-vulnerability.html">Phase 3 – Vulnerability</a>
+  <a href="phase4-exploitation.html">Phase 4 – Exploitation</a>
+  <a href="phase5-privesc.html">Phase 5 – Privilege Escalation</a>
+  <a href="phase6-detection.html">Phase 6 – Detection</a>
+  <a href="phase7-reporting.html">Phase 7 – Reporting</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="section">
+  <h1>Phase 6 — Detection & Response Evaluation</h1>
+  <p>
+    <strong>Objective:</strong> Assess the organization’s detection,
+    alerting, and response capabilities by validating SOC visibility,
+    SIEM correlation, and response timelines against realistic adversary activity.
+  </p>
+
+  <input id="searchBox" class="search" type="text"
+         placeholder="Search tools, detection techniques, MITRE IDs…">
+</div>
+
+<!-- ================= ENDPOINT & DETECTION TESTING ================= -->
+
+<div class="section">
+<h2>Endpoint & Detection Testing</h2>
+
+<div class="tool" data-tool="atomic-red-team">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Atomic Red Team</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1059</span>
+    <span class="tag">T1003</span>
+    <span class="tag">Detection Validation</span>
+  </div>
+  <details><summary>Installation</summary>
+    <code>git clone https://github.com/redcanaryco/atomic-red-team</code>
+    <p>Dependencies: PowerShell (Windows), Bash (Linux/macOS)</p>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Execute non-destructive ATT&CK-mapped tests to validate EDR/SIEM detection.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= MITRE ATT&CK MAPPING ================= -->
+
+<div class="section">
+<h2>MITRE ATT&CK Mapping & Visibility Simulation</h2>
+
+<div class="tool" data-tool="attack-navigator">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">MITRE ATT&CK Navigator</div>
+  </div>
+  <div class="tags">
+    <span class="tag">ATT&CK Mapping</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Visualize coverage gaps and detection maturity across ATT&CK techniques.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="caldera">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Caldera</div>
+  </div>
+  <div class="tags">
+    <span class="tag">Adversary Emulation</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Simulate adversary behaviors to test detection logic and SOC response.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= SIEM & LOG VALIDATION ================= -->
+
+<div class="section">
+<h2>SIEM, Logging & Alert Validation</h2>
+
+<div class="tool" data-tool="custom-log-injectors">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Custom Log Injectors</div>
+  </div>
+  <div class="tags">
+    <span class="tag">SIEM Validation</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Inject synthetic or controlled log events to test SIEM correlation rules.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="sysmon">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Sysmon (Custom Configs)</div>
+  </div>
+  <div class="tags">
+    <span class="tag">Endpoint Logging</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Deploy tuned Sysmon configurations to enhance endpoint visibility.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= RESPONSE METRICS ================= -->
+
+<div class="section">
+<h2>Response Capability Measurement</h2>
+
+<ul>
+  <li>Time to Detect (TTD)</li>
+  <li>Time to Escalate (TTE)</li>
+  <li>Time to Contain (TTC)</li>
+  <li>Alert fidelity & false positives</li>
+  <li>SOC playbook effectiveness</li>
+</ul>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

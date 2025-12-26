@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Phase 1 – Threat Intelligence & Planning</title>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js" defer></script>
+</head>
+
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <h2>Red Team Portal</h2>
+  <a href="index.html">Overview</a>
+  <a href="phase1-threat-intel.html">Phase 1 – Threat Intelligence</a>
+  <a href="phase2-external-recon.html">Phase 2 – External Recon</a>
+  <a href="phase3-vulnerability.html">Phase 3 – Vulnerability</a>
+  <a href="phase4-exploitation.html">Phase 4 – Exploitation</a>
+  <a href="phase5-privesc.html">Phase 5 – Privilege Escalation</a>
+  <a href="phase6-detection.html">Phase 6 – Detection</a>
+  <a href="phase7-reporting.html">Phase 7 – Reporting</a>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="section">
+  <h1>Phase 1 — Threat Intelligence & Planning</h1>
+  <p>
+    <strong>Objective:</strong> Build attacker context by understanding the business,
+    identifying high-value assets, and collecting intelligence from open, technical,
+    and underground sources.
+  </p>
+
+  <input id="searchBox" class="search" type="text"
+         placeholder="Search tools, MITRE IDs, intelligence sources…">
+</div>
+
+<!-- ================= OSINT FRAMEWORKS ================= -->
+
+<div class="section">
+<h2>OSINT & Threat Intelligence Frameworks</h2>
+
+<div class="tool" data-tool="spiderfoot">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">SpiderFoot HX</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1595</span>
+    <span class="tag">OSINT</span>
+  </div>
+  <details><summary>Installation</summary>
+    <code>pip install spiderfoot</code>
+    <p>Dependencies: Python 3, Internet access</p>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Automated OSINT correlation across domains, IPs, emails, leaks.</p>
+    <code>spiderfoot -l 127.0.0.1:5001</code>
+  </details>
+</div>
+
+<div class="tool" data-tool="maltego">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Maltego</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1590</span>
+    <span class="tag">Graph OSINT</span>
+  </div>
+  <details><summary>Installation</summary>
+    <p>Download from official Maltego site</p>
+    <p>Dependencies: Java Runtime Environment</p>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Graph-based visualization of infrastructure, identities, and relationships.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="reconng">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Recon-ng</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1590</span>
+    <span class="tag">Framework</span>
+  </div>
+  <details><summary>Installation</summary>
+    <code>git clone https://github.com/lanmaster53/recon-ng</code>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Module-based OSINT collection using APIs and datasets.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= DARK WEB & BREACH INTEL ================= -->
+
+<div class="section">
+<h2>Dark Web & Breach Intelligence</h2>
+
+<div class="tool" data-tool="ahmia">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Ahmia</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1593</span>
+    <span class="tag">Dark Web</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Tor search engine for onion services and hidden forums.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="dehashed">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">DeHashed</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1589</span>
+    <span class="tag">Credentials</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Search leaked credentials, emails, and usernames.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="leakcheck">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">LeakCheck</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1589</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Breach intelligence and credential exposure lookup.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="breachforums">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">BreachForums (Mirrors)</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1593</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Manual monitoring of underground breach discussions.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="oathnet">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Oath.net</div>
+  </div>
+  <div class="tags">
+    <span class="tag">Credential Intel</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Legacy credential breach aggregation.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= INTERNET-WIDE SEARCH ================= -->
+
+<div class="section">
+<h2>Internet-Wide Asset Discovery</h2>
+
+<div class="tool" data-tool="shodan">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Shodan</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1595</span>
+    <span class="tag">Active Scanning</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Search exposed services, banners, and devices.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="censys">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Censys</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1595</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Certificate and infrastructure search.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="fofa">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">FOFA</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1595</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Chinese internet-wide search engine.</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="intelligencex">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">IntelligenceX</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1593</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Search leaks, darknet, and historical data.</p>
+  </details>
+</div>
+
+</div>
+
+<!-- ================= CLOUD & CODE INTEL ================= -->
+
+<div class="section">
+<h2>Cloud & Code Intelligence</h2>
+
+<div class="tool" data-tool="pacu-readonly">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">Pacu (Read-Only Modules)</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1087</span>
+    <span class="tag">Cloud Recon</span>
+  </div>
+  <details><summary>Installation</summary>
+    <code>pip install pacu</code>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Enumerate AWS IAM, roles, and cloud exposure (non-intrusive).</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="github-dorking">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">GitHub & Google Dorking</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1593</span>
+  </div>
+  <details><summary>Usage</summary>
+    <p>Search exposed secrets, configs, and credentials.</p>
+    <p>References: dorkking.blindf.com</p>
+  </details>
+</div>
+
+<div class="tool" data-tool="githound">
+  <div class="tool-header">
+    <input type="checkbox" onchange="saveState(this)">
+    <div class="tool-title">GitHound</div>
+  </div>
+  <div class="tags">
+    <span class="tag">T1593</span>
+  </div>
+  <details><summary>Installation</summary>
+    <code>go install github.com/tillson/git-hound@latest</code>
+  </details>
+  <details><summary>Usage</summary>
+    <p>Automated GitHub secret discovery.</p>
+  </details>
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>
